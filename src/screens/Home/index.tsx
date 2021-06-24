@@ -40,7 +40,7 @@ export function Home() {
             category: '1',
             date: '22/06 ás 20:40h',
             description: 'Do Ferro ao Prata'
-        }
+        },
     ]
 
     function handleCategorySelect(categoryId: string) {
@@ -65,26 +65,25 @@ export function Home() {
                 categorySelected={category}
                 setCategory={handleCategorySelect}
             />
+            <ListHeader 
+                title='Partidas agendadas' 
+                subtitle='6'
+            />
+            <FlatList 
+                data={appointments}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => (
+                    <Appointment 
+                        data={item} 
+                        onPress={handleAppointmentDetails}
+                    />
+                )}
+                ItemSeparatorComponent={() => <ListDivider />}
+                contentContainerStyle={{ paddingBottom: 69 }}
+                style={styles.matches}
+                showsVerticalScrollIndicator={false}
+            />
             
-            <View style={ styles.content }>
-                <ListHeader 
-                    title='Partidas agendadas' 
-                    subtitle='6'
-                />
-                <FlatList 
-                    data={appointments}
-                    keyExtractor={item => item.id}
-                    renderItem={({ item }) => (
-                        <Appointment 
-                            data={item} 
-                            onPress={handleAppointmentDetails}
-                        />
-                    )}
-                    ItemSeparatorComponent={() => <ListDivider />}
-                    style={styles.matches}
-                    showsVerticalScrollIndicator={false}
-                />
-            </View>
         </Background>
     );
 }

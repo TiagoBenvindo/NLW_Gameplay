@@ -20,10 +20,6 @@ export function AuthRoutes() {
             }}
         >
             <Screen 
-                name='SingIn'
-                component={SignIn}
-            />
-            <Screen 
                 name='Home'
                 component={Home}
             />
