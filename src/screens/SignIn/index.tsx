@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, Image, ActivityIndicator,Alert } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  ActivityIndicator,
+  Alert
+} from "react-native";
 
 import { styles } from './styles'
 import IllustrationImg from '../../assets/illustration.png'
@@ -9,7 +15,7 @@ import { Background } from "../../components/Background";
 import { useAuth } from "../../hooks/auth";
 import { theme } from "../../global/styles/theme";
 
-export function SignIn(){
+export function SignIn() {
   async function handleSignIn() {
     try {
       await signIn();
@@ -20,12 +26,12 @@ export function SignIn(){
 
   const { loading, signIn } = useAuth();
 
-  return(
+  return (
     <Background>
       <View style={styles.container}>
-        <Image 
-          source={IllustrationImg} 
-          style={styles.image} 
+        <Image
+          source={IllustrationImg}
+          style={styles.image}
           resizeMode="stretch"
         />
         <View style={styles.content}>
@@ -41,11 +47,11 @@ export function SignIn(){
 
           {
             loading ? <ActivityIndicator color={theme.colors.primary} />
-            :
-            <ButtonIcon 
-              title='Entrar com Discord'
-              onPress={handleSignIn}
-            />
+              :
+              <ButtonIcon
+                title='Entrar com Discord'
+                onPress={handleSignIn}
+              />
           }
 
         </View>

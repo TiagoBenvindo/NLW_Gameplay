@@ -1,15 +1,33 @@
 import React from "react";
 import { View, Text, Image } from 'react-native';
 import { styles } from "./styles";
+import { api } from "../../services/api";
+import DiscordSvg from '../../assets/discord.svg'
 
-export function GuildIcon () {
-    const uri = 'https://www.ultimaficha.com.br/wp-content/uploads/2021/03/baixados-20.jpg'
+const { CDN_IMAGE } = process.env;
 
-    return (
-        <Image 
+type Props = {
+  guildId: string;
+  iconId: string | null;
+}
+
+export function GuildIcon({ guildId, iconId }: Props) {
+  const uri = `${CDN_IMAGE}/icons/${guildId}/${iconId}.png`;
+
+  return (
+    <View style={styles.container}>
+      {
+        iconId ?
+          <Image
             source={{ uri }}
             style={styles.image}
             resizeMode='cover'
-        />
-    );
+          />
+          : <DiscordSvg
+            width={40}
+            height={40}
+          />
+      }
+    </View>
+  );
 }
